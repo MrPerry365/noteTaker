@@ -1,0 +1,54 @@
+- build the back end
+- connect the back end to the front end 
+- deploy the app to Heroku
+
+- 
+- display the landing page and have the link connect to the notes page on button click
+
+- I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
+
+- display the save icon in the navigation at the top of the page when a title and text are added to the note
+
+- when the display icon is clicked after note input, then the note is saved and displayed in the left-hand column with the other saved notes
+
+- when a saved note in the left-hand column is clicked it is moved to the right-hand column
+
+- when the write icon at the top of the page is clicked input fields for a new note are displayed in the right-hand column
+
+----------------------------------------------------------------
+
+* store and retrieve notes from/in the db.json file
+    - retrieve and store the notes with the fs module
+
+* make Routes for the html
+    - GET/notes should return the notes.html file
+    - GET * should return the index.html file
+
+* make API routes
+    - GET /api/notes should read the db.json file and return all saved notes as JSON
+    - POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client
+        * ( give each note a unique id when it's saved)--(look for an NPM package to do that)
+
+*   make a DELETE route
+    - (DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete. 
+     1. to delete a note, you'll need to read all notes from the db.json file,
+     2. remove the note with the given id property, 
+     3. then rewrite the notes to the db.json file)
+
+---------------------------------------------------------------------
+
+- Application front end must connect to an Express.js back end.
+
+- Application back end must store notes with unique IDs in a JSON file.
+
+- Application must be deployed to Heroku.
+
+- Application deployed at live URL.
+
+
+
+
+
+
+
+
