@@ -6,7 +6,7 @@ module.exports = function (app) {
   app.get("api/notes", (req, res) => {
     console.log("getting notes!");
 
-    let data = fs.readFileSync("./app/data/db.json", "utf8");
+    let data = fs.readFileSync("./develop/db/db.json", "utf8");
     res.json(JSON.parse(data));
   });
 
@@ -16,11 +16,11 @@ module.exports = function (app) {
       id: uniqid(),
     };
 
-    let data = fs.readFileSync("./app/data/db.json", "utf8");
+    let data = fs.readFileSync("./develop/db/db.json", "utf8");
     const dataJSON = JSON.PARSE(data);
     dataJSON.push(newNote);
     fs.writeFileSync(
-      "./app/data/db.json",
+      "./app/db/db.json",
       JSON.stringify(dataJSON),
       (err, text) => {
         if (err) {
