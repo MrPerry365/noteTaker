@@ -1,34 +1,37 @@
 const uniqid = require("uniqid");
 const fs = require("fs");
-const router = require("express").Router();
-const { findById, createNewNote, validateNote } = require("../../api/notes");
-const { notes } = require("../../db/db.json");
-// const note = createNewNote(req.body, notes);
-// const result = findById(req.params.id, notes);
 
-module.exports = function (router) {
-  router.get("/notes/:id", function (req, res) {
-    let result = fs.readFileSync("../../db/db.json", "utf8").trim();
-    res.json(result);
+module.exports = function (app) {
+  // api GET AND POST ROUTES
+  app.get("api/notes", (req, res) => {
+    console.log("getting notes!");
+
+    let data = fs.readFileSync("./app/data/db.json", "utf8");
+    res.json(JSON.parse(data));
   });
 
-  router.post("/api/notes", function (req, res) {
-    let data = fs.readFileSync("../../db/db.json", "utf8").trim();
-    let notes = JSON.parse(data);
-    let newNote = {
+  app.post("/api/notes", (req, res) => {
+    const newNote = {
+      ...req.body,
       id: uniqid(),
-      title: req.body.title,
-      text: req.body.text,
     };
-    notes.push(newNote);
-    fs.writeFileSync("../../db/db.json", JSON.stringify(notes));
-    res.json(newNote);
 
-    if (err) {
-      console.log(err);
-    }
+    let data = fs.readFileSync("./app/data/db.json", "utf8");
+    const dataJSON = JSON.PARSE(data);
+    dataJSON.push(newNote);
+    fs.writeFileSync(
+      "./app/data/db.json",
+      JSON.stringify(dataJSON),
+      (err, text) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log("text");
+      }
+    );
+    console.log("done");
+    res.json(data);
   });
-
 };
 
-module.exports = router;
