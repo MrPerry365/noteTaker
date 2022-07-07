@@ -30,6 +30,10 @@ After installing the dependencies, go to the deployed Heroku link available in t
 
 ## Heroku app deployment https://young-waters-08639.herokuapp.com/
 
+<img src ="assets/noteTakerScreenShot.png">
+
+## Link to demonstration:
+https://drive.google.com/file/d/1srm7PIEE2WJK66bWfL5SXMviJcDLgYhF/view
 ## Contributors
 MrPerry
 
