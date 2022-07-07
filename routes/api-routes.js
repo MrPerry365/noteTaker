@@ -3,10 +3,10 @@ const fs = require("fs");
 
 module.exports = function (app) {
   // api GET AND POST ROUTES
-  app.get("api/notes", (req, res) => {
+  app.get("/api/notes", (req, res) => {
     console.log("getting notes!");
 
-    let data = fs.readFileSync("./develop/db/db.json", "utf8");
+    let data = fs.readFileSync("db/db.json", "utf8");
     res.json(JSON.parse(data));
   });
 
@@ -16,11 +16,11 @@ module.exports = function (app) {
       id: uniqid(),
     };
 
-    let data = fs.readFileSync("./develop/db/db.json", "utf8");
-    const dataJSON = JSON.PARSE(data);
+    let data = fs.readFileSync("db/db.json", "utf8");
+    const dataJSON = JSON.parse(data);
     dataJSON.push(newNote);
     fs.writeFileSync(
-      "./app/db/db.json",
+      "db/db.json",
       JSON.stringify(dataJSON),
       (err, text) => {
         if (err) {
